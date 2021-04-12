@@ -1,2 +1,26 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<!-- pages/login/login.wxml -->
+<view class="loginContainer">
+    <view class="welcome">
+        <h1>欢迎回来！</h1>
+    </view>
+    <view class="loginForm">
+        <view class="phone inputItem">
+            <text>手机号码</text>
+            <input type="text" model:value="{{phone}}" placeholder="请输入手机号码" />
+        </view>
+        <view class="password inputItem">
+            <text>密码</text>
+            <input type="password" model:value="{{password}}" placeholder="请输入密码" />
+        </view>
+        <view class="loginBtn">
+            <button catchtap="login">登陆</button>
+        </view>
+        <view class="forget link inputItem ">
+            <text catchtap="forget">忘记密码？</text>
+        </view>
+        <view class="register inputItem">
+            <text>还没有账号？</text>
+            <text class="link" catchtap="register">马上注册</text>
+        </view>
+    </view>
+</view>

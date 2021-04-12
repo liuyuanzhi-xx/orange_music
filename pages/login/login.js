@@ -1,18 +1,64 @@
 // pages/login/login.js
+
+import request from "../../utils/request"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    phone: "",
+    password: ""
 
+  },
+  async login() {
+    const res = await request('/login/cellphone', {
+      phone: this.data.phone,
+      password: this.data.password
+    })
+    if (res.data.code == 400) {
+      wx.showToast({
+        title: '手机号错误',
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (res.data.code == 502) {
+      wx.showToast({
+        title: '密码错误',
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (res.data.code == 200) {
+      wx.showToast({
+        title: '登陆成功',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      wx.showToast({
+        title: '登陆失败',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
+  forget() {
+    wx.navigateTo({
+      url: "/pages/forget/forget"
+    })
+  },
+  register() {
+    wx.navigateTo({
+      url: "/pages/register/register"
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(this.data.iphone)
   },
 
   /**

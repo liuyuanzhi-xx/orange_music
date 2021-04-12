@@ -1,0 +1,49 @@
+<!-- pages/register/register.wxml -->
+<view class="registerContainer">
+    <view class="title">注册</view>
+    <view class="registerForm">
+        <view class="inputItem">
+            <view class="text">昵称:</view>
+            <view class="input">
+                <input type="text" model:value="{{nickname}}" bindblur="isEmpty" data-type="nickname" />
+                <view class="tips">{{nicknameTips}}</view>
+            </view>
+        </view>
+        <view class="inputItem">
+            <view class="text">密码:</view>
+            <view class="input">
+                <input type="password" model:value="{{password}}" bindblur="isEmpty" data-type="password" />
+                <view class="tips">{{passwordTips}}</view>
+            </view>
+        </view>
+        <view class="inputItem">
+            <view class="text">确认密码:</view>
+            <view class="input">
+                <input type="password" model:value="{{Apassword}}" bindblur="isSame" />
+                <view class="tips">{{ApasswordTips}}</view>
+            </view>
+        </view>
+        <view class="inputItem allowWrap">
+            <view class="itemContainer">
+                <view class="text">手机号码:</view>
+                <view class="input">
+                    <input type="text" model:value="{{phone}}" bindblur="isPhone" />
+                </view>
+                <button catchtap="getCtcode" disabled="{{!isTap}}">
+                    {{countDown == 60 ? "获取验证码":countDown}}
+                </button>
+            </view>
+            <view class="tips">{{phoneTips}}</view>
+        </view>
+        <view class="inputItem lastItem">
+            <view class="text">验证码:</view>
+            <view class="input">
+                <input type="text" model:value="{{captcha}}" bindblur="isEmpty" data-type="captcha" />
+                <view class="tips">{{captchaTips}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="button">
+        <button catchtap="register">立即注册</button>
+    </view>
+</view>

@@ -1,0 +1,120 @@
+.registerContainer {
+    height: 100%;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+        margin: 70rpx 0;
+        font-size: 46rpx;
+
+    }
+
+    .registerForm {
+        width: 100%;
+        padding: 0 30rpx;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-sizing: border-box;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+
+
+        .inputItem {
+            display: flex;
+            width: 100%;
+            padding: 30rpx 0;
+            background-color: #fff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            align-items: center;
+
+
+            .itemContainer {
+                display: flex;
+                align-items: center;
+                // flex-direction: row;
+
+            }
+
+            .tips {
+                height: 100%;
+                color: red;
+                font-size: 30rpx;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            .text {
+                white-space: nowrap;
+                margin-right: 20rpx;
+            }
+
+            .input {
+                display: flex;
+                justify-content: space-between;
+                flex-grow: 1;
+
+                input {
+                    // height: 100%;
+                    box-sizing: border-box;
+                    flex-grow: 1;
+                }
+
+                .tips {
+                    height: 100%;
+                    color: red;
+                    font-size: 30rpx;
+                    text-align: center;
+                    white-space: nowrap;
+                    margin-right: 20rpx;
+
+                }
+            }
+
+
+            button {
+                width: 200rpx;
+                font-size: 30rpx;
+                font-weight: normal;
+                white-space: nowrap;
+                text-align: center;
+                padding: 10rpx 0;
+                background-color: #ddd;
+                flex-shrink: 0;
+            }
+
+        }
+
+        .allowWrap {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 30rpx 0;
+            background-color: #fff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            align-items: flex-start;
+        }
+
+
+        .lastItem {
+            border-bottom: none;
+        }
+
+    }
+
+    .button {
+        width: 630rpx;
+        padding: 50rpx 0;
+        height: 100%;
+        margin: 0 auto;
+
+        button {
+            border-radius: 50rpx;
+            color: #fff;
+            background: #f58220;
+
+        }
+    }
+}

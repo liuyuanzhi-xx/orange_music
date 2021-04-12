@@ -4,11 +4,10 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": false,
 		"coverView": true,
@@ -20,14 +19,15 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"preloadBackgroundData": false,
+		"compileHotReLoad": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false,
@@ -35,7 +35,7 @@
 		"packNpmRelationList": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.16.0",
+	"libVersion": "2.14.4",
 	"appid": "wx72728ef987a9da0f",
 	"projectname": "%E6%A9%99%E5%BF%83%E9%9F%B3%E4%B9%90",
 	"debugOptions": {

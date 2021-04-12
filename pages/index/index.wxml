@@ -1,2 +1,4 @@
 <!-- index.wxml -->
-<view class="container"></view>
+<view class="container">
+首页
+</view>
