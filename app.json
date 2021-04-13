@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/login/login",
     "pages/register/register",
-    "pages/mine/mine",
     "pages/index/index",
     "pages/video/video",
-    
-    "pages/forget/forget"
+    "pages/forget/forget",
+    "components/loading/loading"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,4 @@
+<!-- components/loading/loading.wxml -->
+<view class="{{type +' loadingContainer'}}">
+    <image class="img" src="/static/images/loading.svg" alt="" />
+</view>

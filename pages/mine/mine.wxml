@@ -1,2 +1,70 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<!-- pages/mine/mine.wxml -->
+<view class="mineContainer">
+    <view class="header">
+        <image class="img" src="/static/images/personal/bgPersonHeader.png" alt="" />
+        <view class="userCard">
+            <view class="userInfo" catchtap="toLogin">
+                <view class="avatar">
+                    <image src="{{userInfo? userInfo.profile.avatarUrl:'/static/images/personal/missing-face.png'}}" />
+                </view>
+                <view class="nickname">
+                    <text>{{userInfo? userInfo.profile.nickname:"立即登陆"}}</text>
+                </view>
+            </view>
+            <text class="tips">Orange Music</text>
+        </view>
+    </view>
+    <view class="main">
+        <view class="line">
+            <image src="/static/images/personal/arc.png" />
+        </view>
+        <view class="nav">
+            <view class="myMsg navItem">
+                <view class="iconfont icon-xiaoxi1-copy"></view>
+                <view class="text">我的消息</view>
+            </view>
+            <view class="myFriends navItem">
+                <view class="iconfont icon-tianchongxing--copy"></view>
+                <view class="text">我的好友</view>
+            </view>
+            <view class="myPage navItem">
+                <view class="iconfont icon-gerenzhongxin-copy"></view>
+                <view class="text">个人主页</view>
+            </view>
+            <view class="myStyle navItem">
+                <view class="iconfont icon-personality-settings-copy"></view>
+                <view class="text">个性装扮</view>
+            </view>
+        </view>
+        <view class="moreContainer">
+            <view class="week">
+                <view class="text">最近一周</view>
+                <view class="showContainer" wx:if="{{weekData.length >0}}">
+                    <view class="showItem" wx:for="{{weekData}}" wx:key="id">
+                        <image src="{{item.song.al.picUrl}}" alt="" />
+                        <view class="text">
+                            <view class="song">{{item.song.name}}</view>
+                            <!-- <view class="count">{{item.playCount}}</view> -->
+                        </view>
+                    </view>
+                </view>
+                <view class="showContainer" wx:else>
+                    <view class="none">暂无播放记录</view>
+                </view>
+            </view>
+            <view class="cardList">
+                <view class="myMusic cardItem">
+                    <view class="text">喜欢的音乐</view>
+                    <view class="iconfont icon-dayuhao" />
+                </view>
+                <view class="mySheet cardItem">
+                    <view class="text">收藏的歌单</view>
+                    <view class="iconfont icon-dayuhao" />
+                </view>
+                <view class="myRadio cardItem" catchtap="toLogout">
+                    <view class="text">注销/退出</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

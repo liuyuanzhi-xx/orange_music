@@ -5,21 +5,21 @@
         <view class="inputItem">
             <view class="text">昵称:</view>
             <view class="input">
-                <input type="text" model:value="{{nickname}}" bindblur="isEmpty" data-type="nickname" />
+                <input type="text" model:value="{{nickname}}" catchblur="isEmpty" data-type="nickname" />
                 <view class="tips">{{nicknameTips}}</view>
             </view>
         </view>
         <view class="inputItem">
             <view class="text">密码:</view>
             <view class="input">
-                <input type="password" model:value="{{password}}" bindblur="isEmpty" data-type="password" />
+                <input type="password" model:value="{{password}}" catchblur="isEmpty" data-type="password" />
                 <view class="tips">{{passwordTips}}</view>
             </view>
         </view>
         <view class="inputItem">
             <view class="text">确认密码:</view>
             <view class="input">
-                <input type="password" model:value="{{Apassword}}" bindblur="isSame" />
+                <input type="password" model:value="{{Apassword}}" catchblur="isSame" />
                 <view class="tips">{{ApasswordTips}}</view>
             </view>
         </view>
@@ -27,7 +27,7 @@
             <view class="itemContainer">
                 <view class="text">手机号码:</view>
                 <view class="input">
-                    <input type="text" model:value="{{phone}}" bindblur="isPhone" />
+                    <input type="text" model:value="{{phone}}" catchblur="isPhone" />
                 </view>
                 <button catchtap="getCtcode" disabled="{{!isTap}}">
                     {{countDown == 60 ? "获取验证码":countDown}}
@@ -38,7 +38,7 @@
         <view class="inputItem lastItem">
             <view class="text">验证码:</view>
             <view class="input">
-                <input type="text" model:value="{{captcha}}" bindblur="isEmpty" data-type="captcha" />
+                <input type="text" model:value="{{captcha}}" catchblur="isEmpty" data-type="captcha" />
                 <view class="tips">{{captchaTips}}</view>
             </view>
         </view>

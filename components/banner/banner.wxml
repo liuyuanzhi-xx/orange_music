@@ -1,0 +1,11 @@
+<!-- components/banner/banner.wxml -->
+<view class="bannerContainer">
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#f58220">
+        <block wx:for="{{bannerList}}" wx:key="targetId">
+            <swiper-item class="swiper-item">
+                <image class="image" src="{{item.pic}}"></image>
+                <view class="type">{{item.typeTitle}}</view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>

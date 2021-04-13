@@ -1,0 +1,41 @@
+/* components/banner/banner.wxss */
+.bannerContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.bannerContainer .swiper {
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.bannerContainer .swiper .swiper-item {
+    width: 100%;
+    height: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    position: relative;
+
+}
+
+.bannerContainer .swiper .swiper-item .image {
+    width: 100%;
+    height: 100%;
+    border-radius: 15rpx;
+
+}
+
+.bannerContainer .swiper .swiper-item .type {
+    position: absolute;
+    right: 30rpx;
+    bottom: 0rpx;
+    padding: 0 10rpx;
+    font-size: 20rpx;
+    color: #fff;
+    background-color: #f58220;
+    border-bottom-right-radius: 15rpx;
+    border-top-left-radius: 15rpx;
+
+}

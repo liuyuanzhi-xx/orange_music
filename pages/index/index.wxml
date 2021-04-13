@@ -1,4 +1,6 @@
 <!-- index.wxml -->
-<view class="container">
-首页
+<view class="indexContainer">
+    <view class="banner">
+        <banner bannerList="{{bannerList}}" />
+    </view>
 </view>
