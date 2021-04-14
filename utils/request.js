@@ -6,6 +6,12 @@ export default function (url, data = {}, method = "get") {
             url: mobileURL + url,
             method,
             data,
+            header: {
+                xhrFields: {
+                    withCredentials: true
+                },
+                cookie: wx.getStorageSync('userInfo').cookie || ""
+            },
             success(data) {
                 resolve(data)
 

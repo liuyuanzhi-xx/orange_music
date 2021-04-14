@@ -1,0 +1,12 @@
+<!-- components/sheetList/sheetList.wxml -->
+<view class="sheetListContainer">
+    <view class="sheetItem" wx:for="{{list}}" wx:key="id">
+        <image class="image" src="{{item.picUrl}}">
+            <view class="count">
+                <view class="iconfont icon-play"></view>
+                {{item.playcount||item.playCount}}
+            </view>
+        </image>
+        <text class="text">{{item.name}}</text>
+    </view>
+</view>

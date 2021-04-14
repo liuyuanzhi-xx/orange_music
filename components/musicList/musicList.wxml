@@ -1,0 +1,19 @@
+<!-- components/musicList/musicList.wxml -->
+<view class="musicListContainer">
+    <swiper class="list" next-margin="80rpx">
+        <swiper-item class="listItem" wx:for="{{list}}" wx:key="id">
+            <view class="musicItem" wx:for="{{item}}">
+                <image class="image" src="{{item.picUrl}}">
+                    <view class="iconfont icon-bofang2"></view>
+                </image>
+                <view class="musicInfo">
+                    <view class="title">
+                        <view class="songName">{{item.name}}</view>
+                        <view class="singer">{{"—"+item.song.artists[0].name}}</view>
+                    </view>
+                    <view class="disc" wx:if="{{item.song.alias}}">{{item.song.alias[0]}}</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

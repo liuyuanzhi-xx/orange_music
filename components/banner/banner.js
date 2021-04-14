@@ -24,6 +24,15 @@ Component({
       type: Number,
       value: 500
     },
+    circular: {
+      type: Boolean,
+      value: true
+    },
+    easingFunction: {
+      type: String,
+      value: "default"
+
+    }
   },
 
   /**

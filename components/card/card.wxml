@@ -1,0 +1,27 @@
+<!-- components/sheetListCart/sheetListCard.wxml -->
+<view class="sheetsContainer">
+    <view class="title">
+        <view class="text">{{title}}</view>
+        <view class="more">
+            更多
+            <view class="iconfont icon-dayuhao"></view>
+        </view>
+    </view>
+    <view class="sheets">
+        <!-- <view class="sheetItem" wx:for="{{sheets}}" wx:key="id">
+            <image class="image" src="{{item.picUrl}}">
+                <view class="count">
+                    <view class="iconfont icon-play"></view>
+                    {{item.playcount||item.playCount}}
+                </view>
+            </image>
+            <text class="text">{{item.name}}</text>
+        </view> -->
+        <block wx:if="{{type=='sheet'}}">
+            <sheetList list="{{list}}"></sheetList>
+        </block>
+        <block wx:elif="{{type=='music'}}">
+            <musicList list="{{list}}"></musicList>
+        </block>
+    </view>
+</view>
