@@ -29,6 +29,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    play(e) {
+      console.log(e.detail)
+      this.triggerEvent('play', e.detail, {})
+    }
 
   }
 })

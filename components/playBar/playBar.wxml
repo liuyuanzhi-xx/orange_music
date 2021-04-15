@@ -1,0 +1,23 @@
+<!-- components/playBar/playBar.wxml -->
+<view class="playBarContainer">
+    <view class="musicInfo">
+        <view class="disc">
+            <image class="image" src="{{song.picUrl}}"></image>
+        </view>
+        <view class="info">
+            <view class="songName">{{song.name}}</view>
+            <view class="singer">{{"—" + song.song.artists[0].name}}</view>
+        </view>
+    </view>
+    <view class="operateArea">
+        <view class="play" catchtap="pause" wx:if="{{isPlay}}">
+            <view class="iconfont icon-zanting"></view>
+        </view>
+        <view class="pause" catchtap="play" wx:else>
+            <view class="iconfont icon-bofang2"></view>
+        </view>
+        <view class="playList">
+            <view class="iconfont icon-gedan"></view>
+        </view>
+    </view>
+</view>

@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "banner":"/components/banner/banner",
-        "card":"/components/card/card"
+        "card":"/components/card/card",
+        "playBar":"/components/playBar/playBar"
     }
 }

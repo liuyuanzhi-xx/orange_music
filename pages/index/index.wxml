@@ -27,6 +27,9 @@
         </view>
     </view>
     <view class="bottomContainer">
-        <card list="{{newSong}}" title="新歌速递" type="music" />
+        <card list="{{newSongCut}}" title="新歌速递" type="music" bindplay="play" />
+    </view>
+    <view wx:if="{{playSong}}">
+        <playBar song="{{playSong}}" />
     </view>
 </view>

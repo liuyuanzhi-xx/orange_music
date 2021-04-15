@@ -11,9 +11,18 @@ Page({
     system: null,
     bannerList: [],
     sheets: [],
-    newSong: []
-
+    newSong: [],
+    playSong: null,
+    newSongCut: []
   },
+
+  play(e) {
+    console.log(e.detail)
+    this.setData({
+      playSong: this.data.newSong[e.detail]
+    })
+  },
+
   async onLoad() {
 
     const system = getSystem();
@@ -37,7 +46,6 @@ Page({
       })
     }
     Promise.all([banner, sheet, newSong]).then((result) => {
-      console.log(result);
       if (result[0].data.code == 200) {
         this.setData({
           bannerList: result[0].data.banners
@@ -64,7 +72,8 @@ Page({
       }
       if (result[2].data.code == 200) {
         this.setData({
-          newSong: group(result[2].data.result, 3)
+          newSong: result[2].data.result,
+          newSongCut: group(result[2].data.result, 3)
         })
       }
     }).catch((error) => {

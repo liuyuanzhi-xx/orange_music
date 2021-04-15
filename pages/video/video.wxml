@@ -1,2 +1,5 @@
-<!--pages/video/video.wxml-->
+<!-- pages/video/video.wxml -->
 <text>pages/video/video.wxml</text>
+<view class="playButtonContainer">
+    <canvas canvas-id="canvasCircle" id="myCanvas"></canvas>
+</view>

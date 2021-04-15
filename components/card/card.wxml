@@ -7,21 +7,12 @@
             <view class="iconfont icon-dayuhao"></view>
         </view>
     </view>
-    <view class="sheets">
-        <!-- <view class="sheetItem" wx:for="{{sheets}}" wx:key="id">
-            <image class="image" src="{{item.picUrl}}">
-                <view class="count">
-                    <view class="iconfont icon-play"></view>
-                    {{item.playcount||item.playCount}}
-                </view>
-            </image>
-            <text class="text">{{item.name}}</text>
-        </view> -->
+    <view class="showContainer">
         <block wx:if="{{type=='sheet'}}">
             <sheetList list="{{list}}"></sheetList>
         </block>
         <block wx:elif="{{type=='music'}}">
-            <musicList list="{{list}}"></musicList>
+            <musicList list="{{list}}" bindplay="play"></musicList>
         </block>
     </view>
 </view>
