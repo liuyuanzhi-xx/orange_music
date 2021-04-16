@@ -2,11 +2,11 @@
 <view class="playBarContainer">
     <view class="musicInfo">
         <view class="disc">
-            <image class="image" src="{{song.picUrl}}"></image>
+            <image class="image" src="{{playSong ? playSong.picUrl : '../../static/images/playBar/disc.png'}}"></image>
         </view>
         <view class="info">
-            <view class="songName">{{song.name}}</view>
-            <view class="singer">{{"—" + song.song.artists[0].name}}</view>
+            <view class="songName">{{playSong ? playSong.name : '听歌撸代码更快哦~'}}</view>
+            <view class="singer">{{playSong ? '—' + playSong.singer[0].name:''}}</view>
         </view>
     </view>
     <view class="operateArea">

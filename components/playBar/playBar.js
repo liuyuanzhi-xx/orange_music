@@ -1,5 +1,6 @@
 // components/playBar/playBar.js
 import request from "../../utils/request"
+
 Component({
   options: {
     addGlobalClass: true
@@ -20,7 +21,9 @@ Component({
    */
   data: {
     backgroundAudioManager: null,
-    isPlay: false
+    isPlay: false,
+    playSongList: null,
+    playSong: null
 
   },
 
@@ -45,33 +48,58 @@ Component({
 
         })
       }
-    }
-
-  },
-  observers: {
-    'song': async function (val) {
-      if (val) {
-        const backgroundAudioManager = wx.getBackgroundAudioManager()
-        const res = await request("/song/url", {
-          id: val.id
+    },
+    watchBack: async function (value) { //这里的value 就是 app.js 中 watch 方法中的 set, 返回整个 globalData
+      console.log(this)
+      this.setData({
+        playSongList: value,
+        playSong: value.playSongList[value.current]
+      });
+      const backgroundAudioManager = wx.getBackgroundAudioManager()
+      const res = await request("/song/url", {
+        id: this.data.playSong.id
+      })
+      if (res.data.code == 200) {
+        console.log(res.data.data[0].url)
+        backgroundAudioManager.title = this.data.playSong.name
+        backgroundAudioManager.src = res.data.data[0].url
+        this.setData({
+          isPlay: true,
+          backgroundAudioManager: backgroundAudioManager
         })
-        if (res.data.code == 200) {
-          console.log(res.data.data[0].url)
-          backgroundAudioManager.title = val.name
-          backgroundAudioManager.src = res.data.data[0].url
-
-          this.setData({
-            isPlay: true,
-            backgroundAudioManager: backgroundAudioManager
-          })
-        }
-
-
       }
-
+      console.log(this.data.playSongList)
+      console.log(this.data.playSong)
     }
   },
-  ready: async function () {
+  // observers: {
+  //   'song': async function (val) {
+  //     if (val) {
+  //       const backgroundAudioManager = wx.getBackgroundAudioManager()
+  //       const res = await request("/song/url", {
+  //         id: val.id
+  //       })
+  //       if (res.data.code == 200) {
+  //         console.log(res.data.data[0].url)
+  //         backgroundAudioManager.title = val.name
+  //         backgroundAudioManager.src = res.data.data[0].url
+
+  //         this.setData({
+  //           isPlay: true,
+  //           backgroundAudioManager: backgroundAudioManager
+  //         })
+  //       }
+
+
+  //     }
+
+  //   }
+  // },
+  attached: function () {
+    const that = this;
+    console.log(that)
+    getApp().watch(that.watchBack.bind(that));
+
     // 是否遵循系统静音开关
     // this.setData({
     //   audioContext: wx.getBackgroundAudioManager()
