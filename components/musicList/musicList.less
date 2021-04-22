@@ -1,72 +1,77 @@
 .musicListContainer {
-    .list {
+    .musicItem {
         display: flex;
-        height: 330rpx;
+        margin: 20rpx 0rpx;
+        align-items: center;
+        height: 100rpx;
 
-        .listItem {
-            margin-left: 20rpx;
+        .image {
+            width: 100rpx;
+            height: 100rpx;
+            margin-right: 20rpx;
+            border-radius: 15rpx;
+            position: relative;
 
-            .musicItem {
-                display: flex;
-                margin: 10rpx 0rpx;
-                align-items: center;
-                height: 100rpx;
-
-                .image {
-                    width: 100rpx;
-                    height: 100rpx;
-                    margin-right: 20rpx;
-                    border-radius: 15rpx;
-                    position: relative;
-
-                    .iconfont {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        color: #fff;
-                        opacity: 0.8;
-                    }
-                }
-
-                .musicInfo {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    flex-grow: 1;
-                    height: 100%;
-                    border-bottom: 1rpx solid #ddd;
-
-                    .title {
-                        display: flex;
-                        align-items: center;
-
-                        .songName {
-                            font-size: 25rpx;
-                        }
-
-                        .singer {
-                            margin-left: 10rpx;
-                            font-size: 20rpx;
-                            color: #696969;
-                        }
-                    }
-
-                    .disc {
-                        margin-top: 10rpx;
-                        font-size: 20rpx;
-                        color: #696969;
-                    }
-                }
-
-                .musicInfo:last-child {
-                    border-bottom: none;
-                }
-
+            .iconfont {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                opacity: 0.9;
             }
 
+            .play {
+                width: 50rpx;
+                height: 40rpx;
+            }
 
-
+            .loading {
+                height: 50rpx;
+                width: 50rpx;
+            }
         }
+
+        .musicInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            height: 100%;
+            border-bottom: 1rpx solid #ddd;
+
+            .title {
+                display: flex;
+                align-items: center;
+
+                .songName {
+                    font-size: 25rpx;
+                }
+
+                .singer {
+                    margin-left: 30rpx;
+                    font-size: 20rpx;
+                    color: #696969;
+                }
+            }
+
+            .disc {
+                margin-top: 10rpx;
+                margin-left: 20rpx;
+
+                font-size: 20rpx;
+                color: #696969;
+            }
+        }
+
+        .musicInfo:last-child {
+            border-bottom: none;
+        }
+
     }
+
+    .musicItem:active {
+        background-color: #ddd;
+    }
+
 }

@@ -1,18 +1,16 @@
 <!-- components/sheetListCart/sheetListCard.wxml -->
 <view class="sheetsContainer">
-    <view class="title">
-        <view class="text">{{title}}</view>
-        <view class="more">
-            更多
-            <view class="iconfont icon-dayuhao"></view>
+    <view class="top">
+        <view class="title">
+            <view class="text">{{title}}</view>
+            <view class="more" wx:if="{{hasMore}}">
+                更多
+                <view class="iconfont icon-dayuhao"></view>
+            </view>
+        </view>
+        <view class="showContainer">
+            <slot></slot>
         </view>
     </view>
-    <view class="showContainer">
-        <block wx:if="{{type=='sheet'}}">
-            <sheetList list="{{list}}"></sheetList>
-        </block>
-        <block wx:elif="{{type=='music'}}">
-            <musicList list="{{list}}" bindplay="play"></musicList>
-        </block>
-    </view>
+    <view class="bottom" wx:if="{{linkText}}">{{linkText}}</view>
 </view>

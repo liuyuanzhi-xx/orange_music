@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "sheetList":"/components/sheetList/sheetList",
-    "musicList":"/components/musicList/musicList"
+    "sheetList":"/components/sheetList/sheetList"
   }
 }

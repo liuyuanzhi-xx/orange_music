@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "loading":"/components/loading/loading",
+    "card":"/components/card/card",
+    "musicList":"/components/musicList/musicList",
+    "playBar":"/components/playBar/playBar"
+  }
+  
+}

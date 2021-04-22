@@ -1,18 +1,26 @@
 // components/sheetListCart/sheetListCard.js
 Component({
+  options: {
+    multipleSlots: true
+  },
+
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
-    },
     title: {
       type: String,
       value: ""
     },
-    type: {
+    hasMore: {
+      type: Boolean,
+      value: true
+    },
+    linkTo: {
+      type: String,
+      value: ""
+    },
+    linkText: {
       type: String,
       value: ""
     }
@@ -29,10 +37,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    play(e) {
-      console.log(e.detail)
-      this.triggerEvent('play', e.detail, {})
-    }
+
 
   }
 })

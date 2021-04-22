@@ -2,6 +2,10 @@
     "usingComponents": {
         "banner":"/components/banner/banner",
         "card":"/components/card/card",
-        "playBar":"/components/playBar/playBar"
+        "playBar":"/components/playBar/playBar",
+        "searchBar":"/components/searchBar/searchBar",
+        "loading":"/components/loading/loading",
+        "sheetList":"/components/sheetList/sheetList",
+        "mySwiper":"/components/mySwiper/mySwiper"
     }
 }

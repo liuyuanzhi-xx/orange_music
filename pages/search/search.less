@@ -1,0 +1,217 @@
+.searchContainer {
+    // background-color: #f5f5f5;
+    height: 100%;
+
+    .input {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto 25rpx auto;
+        padding-top: 25rpx;
+        border-bottom: 0.5rpx solid #ddd;
+
+        input {
+            width: 95%;
+            flex-grow: 1;
+            height: 70rpx;
+        }
+
+        .iconfont {
+            flex-shrink: 0;
+            margin: 0 10rpx;
+        }
+    }
+
+    .bottom {
+        .showContainer {
+            .history {
+                display: flex;
+                align-items: center;
+                width: 90%;
+                margin: 30rpx auto;
+                height: 50rpx;
+
+                .title {
+                    font-size: 30rpx;
+                    font-weight: bold;
+                    flex-shrink: 0;
+                    height: 100%;
+                    line-height: 50rpx;
+
+                }
+
+                ::-webkit-scrollbar {
+                    width: 0;
+                    height: 0;
+                    color: transparent;
+                }
+
+                .list {
+                    display: flex;
+                    align-items: center;
+                    // width: 100%;
+                    height: 100%;
+                    flex-grow: 1;
+                    overflow-x: hidden;
+                    margin: 0 20rpx;
+                    position: relative;
+
+                    .historyList {
+                        width: 100%;
+                        display: flex;
+                        overflow-x: auto;
+                        align-items: center;
+                        position: relative;
+                        margin: 0 10rpx;
+
+                        .item {
+                            box-sizing: border-box;
+                            height: 100%;
+                            padding: 10rpx;
+                            margin: 0 10rpx;
+                            line-height: 25rpx;
+                            background-color: #F4F4F4;
+                            border-radius: 20rpx;
+                            white-space: nowrap;
+                            font-size: 30rpx;
+
+                        }
+                    }
+
+                    .hidden {
+                        position: absolute;
+                        top: 0;
+                        // width: 1rpx;
+                        height: 100%;
+                        background-color: #fff;
+                    }
+
+                    .hiddenLeft {
+                        left: -30rpx;
+                        box-shadow: inset 0 0 0 0,
+                            30rpx 0px 30rpx 30rpx #fff,
+                            inset 0 0 0 0,
+                            inset 0 0 0 0;
+                    }
+
+                    .hiddenRight {
+                        right: -30rpx;
+                        box-shadow: inset 0 0 0 0,
+                            inset 0 0 0 0,
+                            inset 0 0 0 0,
+                            -30rpx 0px 30rpx 30rpx #fff;
+                    }
+                }
+
+
+                .iconfont {
+                    height: 100%;
+                    font-size: 40rpx;
+                    flex-shrink: 0;
+                    line-height: 50rpx;
+
+                }
+            }
+
+            .hotSearch {
+                width: 90%;
+                margin: 0 auto;
+                margin-top: 50rpx;
+
+                .title {
+                    margin-bottom: 20rpx;
+                    padding-bottom: 10rpx;
+                    font-weight: bold;
+                    border-bottom: .2rpx solid #f5f5f5;
+                }
+
+                .hotList {
+                    display: flex;
+                    flex-wrap: wrap;
+
+
+
+                    .hotItem {
+                        display: flex;
+                        height: 70rpx;
+                        padding: 20rpx;
+                        align-items: center;
+                        width: 50%;
+                        flex-shrink: 0;
+                        flex-grow: 0;
+                        box-sizing: border-box;
+                        font-size: 30rpx;
+                        color: #696969;
+
+                        .num {
+                            margin-right: 20rpx;
+                            line-height: 40rpx;
+                        }
+
+                        .song {
+                            margin-right: 20rpx;
+                            line-height: 40rpx;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        .aside {
+                            display: flex;
+                            align-items: center;
+
+                            .img {
+                                width: 50rpx;
+                                height: 40rpx;
+                            }
+
+                            .img1,
+                            .img0 {
+                                width: 50rpx;
+                                height: 40rpx;
+                            }
+
+                            .img5 {
+                                width: 30rpx;
+                                height: 30rpx;
+                            }
+                        }
+                    }
+
+                    .hotItem:active {
+                        background-color: #ddd;
+                    }
+
+                    .hot {
+                        .num {
+                            font-weight: bold;
+                            color: #FF3A3A;
+                        }
+
+                        .song {
+                            font-weight: bold;
+                            color: #000;
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+        .resultContainer {
+            width: 90%;
+            margin: 40rpx auto;
+            margin-bottom: 150rpx;
+
+
+
+            .item {
+                border-radius: 25rpx;
+                box-shadow: 5rpx 5rpx 5rpx 5rpx #ddd;
+            }
+        }
+    }
+
+}

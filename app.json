@@ -1,12 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/search/search",
     "pages/mine/mine",
     "pages/login/login",
     "pages/register/register",
     "pages/video/video",
     "pages/forget/forget",
-    "components/loading/loading"
+    "components/loading/loading",
+    "pages/play/play"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,5 +44,7 @@
   "usingComponents": {},
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "requiredBackgroundModes":["audio"]
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }

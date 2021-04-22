@@ -1,0 +1,9 @@
+<!-- components/searchBar/searchBar.wxml -->
+<view class="searchBarContainer">
+    <view class="searchContainer" catchtap="toSearchPage">
+        <view class="iconfont icon-fangdajing"></view>
+        <view class="searchInput">
+            <view class="text">听点什么？</view>
+        </view>
+    </view>
+</view>

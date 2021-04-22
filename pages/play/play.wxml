@@ -1,0 +1,15 @@
+<!-- pages/play/play.wxml -->
+<view class="playContainer">
+    <view class="singer">演唱：{{singer}}</view>
+    <view class="handle">
+        <image src="/static/images/play/needle.png" />
+        <view class="circle"></view>
+    </view>
+    <view class="disc">
+        <image class="disc_img" src="/static/images/play/disc.png">
+            <image class="picUrl" src="{{picUrl}}" />
+        </image>
+    </view>
+    <view class="liric"></view>
+    <view class="playBar"></view>
+</view>

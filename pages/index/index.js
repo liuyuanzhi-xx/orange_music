@@ -12,16 +12,10 @@ Page({
     bannerList: [],
     sheets: [],
     newSong: [],
-    playSong: null,
     newSongCut: []
   },
 
-  play(e) {
-    console.log(e.detail)
-    this.setData({
-      playSong: this.data.newSong[e.detail]
-    })
-  },
+
 
   async onLoad() {
 
@@ -60,7 +54,7 @@ Page({
         }
         this.setData({
           sheets: data.map((item) => {
-            console.log(item.playcount);
+            // console.log(item.playcount);
             if (item.playcount) {
               item.playcount = item.playcount > 10000 ? Math.floor(item.playcount / 10000) + "万" : item.playcount;
             } else {
@@ -71,9 +65,21 @@ Page({
         })
       }
       if (result[2].data.code == 200) {
+        const res = result[2].data.result.map((item) => {
+          const singer = item.song.artists.reduce((prev, cur, index) => {
+            if (index == item.song.artists.length - 1) {
+              return prev + cur.name;
+            } else {
+              return prev + cur.name + '/';
+            }
+
+          }, '')
+          item.singer = singer;
+          return item;
+        })
         this.setData({
-          newSong: result[2].data.result,
-          newSongCut: group(result[2].data.result, 3)
+          newSong: res,
+          newSongCut: group(res, 3)
         })
       }
     }).catch((error) => {

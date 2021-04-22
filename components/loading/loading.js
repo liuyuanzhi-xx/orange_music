@@ -7,6 +7,14 @@ Component({
     type: {
       type: String,
       value: "absolute"
+    },
+    url: {
+      type: String,
+      value: "/static/images/loading.svg"
+    },
+    text: {
+      type: String,
+      value: ""
     }
 
   },

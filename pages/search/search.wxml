@@ -1,0 +1,52 @@
+<!-- pages/search/search.wxml -->
+<view class="searchContainer">
+    <view class="input">
+        <input type="text" value="{{inputValue}}" placeholder="听些什么？" maxlength="10" bindinput="bindKeyInput" bindconfirm="search" bindfocus="input"></input>
+        <view class="iconfont icon-guanbi" wx:if="{{inputValue}}" catchtap="emptyValue"></view>
+    </view>
+    <view class="bottom">
+        <view class="showContainer" hidden="{{searchRes || loadingRes}}">
+            <view class="history" style="display:{{historyList.length? 'flex':'none'}}">
+                <view class="title">历史</view>
+                <view class="list">
+                    <view class="historyList">
+                        <view class="item" wx:for="{{historyList}}" wx:key="item" catchtap="selected" mark:value="{{item}}">
+                            {{item}}
+                        </view>
+                    </view>
+                    <view class="hidden hiddenLeft"></view>
+                    <view class="hidden hiddenRight"></view>
+                </view>
+                <view class="iconfont icon-lajitong" catchtap="emptyHistory"></view>
+            </view>
+            <view class="hotSearch">
+                <view class="title">热搜榜</view>
+                <view class="hotList" style="display:{{loading? 'none':'flex'}}">
+                    <view class="hotItem {{index+1 <= 3? 'hot':''}}" wx:for="{{hotList}}" mark:value="{{item.searchWord}}" catchtap="selected">
+                        <veiw class="num">{{index+1}}</veiw>
+                        <view class="song">{{item.searchWord}}</view>
+                        <view class="aside" wx:if="{{item.iconUrl}}">
+                            <image class="img {{'img'+item.iconType}}" src="{{item.iconUrl}}"></image>
+                        </view>
+                    </view>
+                    <view class="loading" wx:if="{{loadingHot}}">
+                        <loading url="/static/images/loading2.svg" text="努力加载中..." />
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="resultContainer" hidden="{{loadingRes || !searchRes}}">
+            <view class="item">
+                <card title="单曲" linkText="{{searchRes.song.moreText}}" hasMore="{{false}}">
+                    <musicList list="{{searchRes.song.songs}}" />
+                </card>
+            </view>
+        </view>
+        <view class="loading" wx:if="{{loadingRes}}">
+            <loading url="/static/images/loading2.svg" text="努力加载中..." />
+        </view>
+    </view>
+    <!-- <view class="playBar">
+        <playBar song="{{playSong}}" />
+    </view> -->
+</view>

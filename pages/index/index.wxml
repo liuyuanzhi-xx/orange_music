@@ -1,6 +1,9 @@
 <!-- index.wxml -->
 <view class="indexContainer">
     <view class="topContainer">
+        <view class="searchBar">
+            <searchBar />
+        </view>
         <view class="banner">
             <banner bannerList="{{bannerList}}" interval="{{3000}}" />
         </view>
@@ -23,13 +26,19 @@
             </view>
         </view>
         <view class="recommendSheet">
-            <card list="{{sheets}}" title="推荐歌单" type="sheet" />
+            <card title="推荐歌单">
+                <view>
+                    <sheetList list="{{sheets}}"></sheetList>
+                </view>
+            </card>
         </view>
     </view>
     <view class="bottomContainer">
-        <card list="{{newSongCut}}" title="新歌速递" type="music" bindplay="play" />
+        <card title="新歌速递">
+            <mySwiper list="{{newSongCut}}"></mySwiper>
+        </card>
     </view>
     <view>
-        <playBar song="{{playSong}}" />
+        <playBar />
     </view>
 </view>
