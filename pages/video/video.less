@@ -1,0 +1,193 @@
+.videoContainer {
+    .header {
+        display: flex;
+        align-items: center;
+
+        .camera {
+            padding-top: 30rpx;
+            margin-left: 20rpx;
+
+            .img {
+                width: 80rpx;
+                height: 80rpx;
+
+            }
+
+        }
+
+        .search {
+            flex-grow: 1;
+        }
+    }
+
+    .nav {
+        .navContainer {
+            display: flex;
+            overflow-x: auto;
+
+            .navItem {
+                margin-left: 20rpx;
+                padding: 10rpx;
+                white-space: nowrap;
+            }
+
+            .active {
+                border-bottom: 2rpx solid #f58220;
+            }
+
+        }
+
+    }
+
+    .videoList {
+        height: calc(100vh - 182rpx);
+
+        .videoItem {
+            // display: flex;s
+            // flex-direction: column;
+            // align-items: center;
+            // justify-content: center;
+            border-bottom: 0.5rpx solid #ddd;
+            margin: 20rpx;
+
+
+
+            .row {
+                margin-bottom: 10rpx;
+            }
+
+            .videoBox {
+                position: relative;
+                height: 370rpx;
+
+                .common {
+
+                    width: 100%;
+                    height: 360rpx;
+                    margin: 0 auto;
+
+                }
+
+                .loading {
+                    height: 100%;
+                }
+
+                .play {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .iconfont {
+                        font-size: 74rpx;
+                        color: #fff;
+                        opacity: 0.8;
+                    }
+
+                    .duration {
+                        font-size: 35rpx;
+                        color: #fff;
+
+                    }
+
+
+                }
+
+
+
+            }
+
+            // .video {
+            //     height: 360rpx;
+            //     margin: 0 auto;
+            // }
+
+            // .img {
+            //     height: 360rpx;
+            //     margin: 0 auto;
+            // }
+
+            .desc {
+                color: #696969;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+            }
+
+            .title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .info {
+                    display: flex;
+                    align-items: center;
+
+
+                    .avatar {
+                        margin-right: 20rpx;
+
+                        .img {
+                            width: 75rpx;
+                            height: 75rpx;
+                            border-radius: 50%;
+                        }
+
+                    }
+                }
+
+                .other {
+                    display: flex;
+                    align-items: center;
+
+
+                    .item {
+                        display: flex;
+                        margin-left: 20rpx;
+
+                        .iconfont {
+
+                            font-size: 42rpx;
+                        }
+
+                        .count {
+                            font-size: 20rpx;
+                            color: #696969
+                        }
+
+                        button {
+                            height: 42rpx;
+                            width: 42rpx;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #fff;
+                            font-weight: normal;
+                            overflow: visible;
+
+                            .iconfont {
+                                line-height: 42rpx;
+                                height: 42rpx;
+                                width: 42rpx;
+                                text-align: center;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+
+        }
+
+
+    }
+
+}

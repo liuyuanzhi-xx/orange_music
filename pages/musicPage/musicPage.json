@@ -1,10 +1,9 @@
 {
   "usingComponents": {
-    "loading":"/components/loading/loading",
+    "currencyPage":"/components/currencyPage/currencyPage",
     "card":"/components/card/card",
     "musicList":"/components/musicList/musicList",
-    "playBar":"/components/playBar/playBar",
     "popPanel":"/components/popPanel/popPanel"
+    
   }
-  
 }

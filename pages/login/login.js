@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone: "",
-    password: "",
+    phone: "19117692297",
+    password: "302822945Haiai",
     phoneFlag: false,
     phoneTips: "",
     passwordFlag: false,
@@ -54,7 +54,7 @@ Page({
           success: function () {
             wx.setStorageSync('userInfo', res.data)
             app.globalData.userInfo = res.data;
-            console.log(app.globalData.userInfo);
+
             wx.switchTab({
               url: "/pages/mine/mine"
             })
@@ -76,7 +76,7 @@ Page({
   },
   isPhone() {
     const rule = rules.isPhone(this.data.phone);
-    console.log(rule.msg);
+
     this.setData({
       phoneTips: rule.msg,
       phoneFlag: rule.flag
@@ -85,7 +85,7 @@ Page({
   isEmpty(e) {
     let type = e.currentTarget.dataset.type;
     const rule = rules.isEmpty(this.data[type]);
-    console.log(rule.msg);
+
     this.setData({
       [type + 'Tips']: rule.msg,
       [type + 'Flag']: rule.flag

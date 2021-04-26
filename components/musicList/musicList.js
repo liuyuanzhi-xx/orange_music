@@ -2,6 +2,7 @@
 const app = getApp();
 
 import PubSub from 'pubsub-js'
+import request from "../../utils/request"
 Component({
   options: {
     addGlobalClass: true
@@ -14,6 +15,18 @@ Component({
       type: Array,
       value: []
     },
+    canOperate: {
+      type: Boolean,
+      value: true
+    },
+    url: {
+      type: String,
+      value: ""
+    },
+    op: {
+      type: Object,
+      value: {}
+    }
   },
 
   /**
@@ -24,7 +37,10 @@ Component({
     playSong: null,
     loadingSongId: 0,
     isPlay: false,
-    loading: false
+    loading: false,
+    resLoading: false,
+    musicList: [],
+    isPop: false
   },
 
   /**
@@ -35,94 +51,114 @@ Component({
 
       const list = app.globalData.playSong.list;
       const current = app.globalData.playSong.current
-      const playSong = this.properties.list[e.mark.index];
-      console.log(playSong)
-      this.setData({
-        playSong: {
-          id: playSong.id,
-          name: playSong.name,
-          picUrl: playSong.picUrl || playSong.al.picUrl,
-          singer: playSong.singer,
-          duration: playSong.dt || playSong.song.duration
-        }
-      })
-      console.log(this.data.playSong)
-      const currentSongId = this.data.playSong.id;
-      const type = e.currentTarget.dataset.id;
-      if (!this.data.isPlay) {
-        if (list.length && (currentSongId == list[current].id)) {
-          if (type == 'info') {
-            wx.navigateTo({
-              url: '/pages/play/play'
+      const playSong = this.data.musicList[e.mark.index];
+      const type = e.mark.type;
+      if (type == 'info' || type == 'img') {
+        this.setData({
+          playSong: {
+            id: playSong.id,
+            name: playSong.name,
+            picUrl: playSong.picUrl || playSong.al.picUrl,
+            singer: playSong.singer,
+            duration: playSong.dt || playSong.song.duration
+          }
+        })
+        const currentSongId = this.data.playSong.id;
+
+        if (!this.data.isPlay) {
+          if (list.length && (currentSongId == list[current].id)) {
+            if (type == 'info') {
+              wx.navigateTo({
+                url: '/pages/play/play'
+              })
+
+            }
+            PubSub.publish('togglePlay', true)
+          } else {
+            this.setData({
+              loadingSongId: currentSongId
             })
 
+            if (type == 'info') {
+              wx.navigateTo({
+                url: '/pages/play/play'
+              })
+
+            }
+            PubSub.publish('addPlaySong', this.data.playSong)
+
+
+
           }
-          PubSub.publish('togglePlay', true)
+
+
         } else {
-          this.setData({
-            loadingSongId: currentSongId
-          })
-          if (type == 'info') {
-            wx.navigateTo({
-              url: '/pages/play/play'
+          if (list.length && (currentSongId == list[current].id)) {
+            if (type == 'info') {
+              wx.navigateTo({
+                url: '/pages/play/play'
+              })
+              return;
+            }
+            PubSub.publish('togglePlay', false)
+          } else {
+            this.setData({
+              loadingSongId: currentSongId
             })
 
-          }
-          PubSub.publish('addPlaySong', this.data.playSong)
 
+            if (type == 'info') {
+              wx.navigateTo({
+                url: '/pages/play/play'
+              })
+
+            }
+            PubSub.publish('addPlaySong', this.data.playSong)
+
+
+          }
         }
 
-      } else {
+      } else if (type == 'operate') {
+        this.triggerEvent('pop', e.mark.value)
 
-        if (list.length && (currentSongId == list[current].id)) {
-          if (type == 'info') {
-            wx.navigateTo({
-              url: '/pages/play/play'
-            })
-            return;
-          }
-          PubSub.publish('togglePlay', false)
-        } else {
-          this.setData({
-            loadingSongId: currentSongId
-          })
-          if (type == 'info') {
-            wx.navigateTo({
-              url: '/pages/play/play'
-            })
-
-          }
-          PubSub.publish('addPlaySong', this.data.playSong)
-
-        }
       }
-
 
 
     },
     setPlaySongId(msg, value) {
       this.setData({
-        playSongId: value.list[value.current].id
+        playSongId: value.list.length ? value.list[value.current].id : 0
       })
-      console.log(this.data.playSongId, this.data.isPlay)
+
     },
     setIsPlay(msg, value) {
       this.setData({
         isPlay: value
       })
-      console.log(msg, this.data.playSongId, this.data.isPlay)
+
     },
     toggleLoading(msg, value) {
       this.setData({
         loading: value
       })
+    },
+
+  },
+  observers: {
+    'list': function (list) {
+      if (list.length) {
+        this.setData({
+          musicList: list
+        })
+      }
+
     }
   },
-  attached: function () {
+  attached: async function () {
     const list = app.globalData.playSong.list;
     const current = app.globalData.playSong.current
     const isPlay = app.globalData.isPlay
-
     PubSub.subscribe('ml_setPlaySongId', this.setPlaySongId.bind(this));
     PubSub.subscribe('ml_setIsPlay', this.setIsPlay.bind(this));
     PubSub.subscribe('ml_toggleLoading', this.toggleLoading.bind(this));
@@ -132,10 +168,44 @@ Component({
         isPlay: isPlay
       })
     }
+    if (this.properties.url && !this.properties.list.length) {
+      this.setData({
+        resLoading: true
+      })
+      const res = await request(this.properties.url, this.properties.op)
+      if (res.data.code == 200) {
+        this.setData({
+          resLoading: false
+        })
+        const list = res.data.data.dailySongs.map((item) => {
+          const singer = item.ar.reduce((prev, cur, index) => {
+            if (index == item.ar.length - 1) {
+              return prev + cur.name;
+            } else {
+              return prev + cur.name + '/';
+            }
 
+          }, '')
+          item.singer = singer;
+          return item;
+        })
+        this.setData({
+          musicList: list
+        })
+        PubSub.publish("cp_setCount", list.length)
+      }
+    } else {
+      this.setData({
+        musicList: this.properties.list
+      })
 
+    }
 
-
+  },
+  detached: function () {
+    PubSub.unsubscribe('ml_setPlaySongId')
+    PubSub.unsubscribe('ml_setIsPlay')
+    PubSub.unsubscribe('ml_toggleLoading')
   }
 
 

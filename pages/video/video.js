@@ -1,17 +1,158 @@
 // pages/video/video.js
+import request from "../../utils/request"
+import moment from "moment"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    navId: "",
+    navGroupList: [],
+    videoGroupList: [],
+    videoUrl: "",
+    vid: '',
+    isPlay: false,
+    listLoading: false,
+    videoLoading: false,
+    isTriggered: false,
+    offset: 0
 
+  },
+  changeNavId(e) {
+    if (e.mark.id) {
+      this.setData({
+        navId: e.mark.id
+      })
+      this.getvideoGroupList()
+    }
+  },
+  async play(e) {
+    // this.setData({
+    //   videoLoading: true
+    // })
+    const res = await request('/video/url', {
+      id: e.mark.vid
+    });
+
+    if (res.data.code == 200) {
+
+      this.setData({
+        vid: e.mark.vid,
+        videoUrl: res.data.urls[0].url,
+        isPlay: true
+      })
+
+
+    }
+
+
+  },
+  // canPlay() {
+  //   this.setData({
+  //     videoLoading: false,
+  //     isPlay: true,
+  //   })
+  // },
+  async getvideoGroupList(value) {
+
+    this.setData({
+      offset: 0,
+      listLoading: true,
+    })
+    if (!value) {
+      this.setData({
+        videoGroupList: []
+      })
+    }
+    const res = await request('/video/group', {
+      id: this.data.navId
+    });
+
+
+    if (res.data.code == 200) {
+      const list = res.data.datas.map((item, index) => {
+        item.id = index;
+        item.data.duration = moment(item.data.durationms).format('mm:ss');
+        return item
+      })
+      this.setData({
+        videoGroupList: list,
+        offset: this.data.offset + 8,
+        listLoading: false
+      })
+    } else if (res.data.code == 301) {
+      wx.showModal({
+        title: "登陆提醒",
+        content: "请先登陆",
+        showCancel: false,
+        success(res) {
+          if (res.confirm) {
+            wx.reLaunch({
+              url: "/pages/index/index"
+            })
+          }
+        }
+
+      })
+    }
+
+
+  },
+  refresh() {
+
+
+    this.getvideoGroupList('re');
+
+    this.setData({
+      isPlay: false,
+      videoUrl: "",
+      isTriggered: false
+    })
+  },
+  async getMore() {
+    if (this.data.listLoading) {
+      return;
+
+    }
+    this.setData({
+      listLoading: true
+    })
+    const res = await request('/video/group', {
+      id: this.data.navId,
+      offset: this.data.offset
+    });
+
+
+    if (res.data.code == 200) {
+      const list = res.data.datas.map((item) => {
+        item.id = item.data.vid;
+        item.data.duration = moment(item.data.durationms).format('mm:ss');
+        return item
+      })
+      this.setData({
+        videoGroupList: this.data.videoGroupList.concat(list),
+        offset: this.data.offset + 8,
+        listLoading: false
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
+    const res = await request('/video/group/list');
+    console.log(res)
+    if (res.data.code == 200) {
+      this.setData({
+        navGroupList: res.data.data.slice(0, 14),
+        navId: res.data.data[0].id
+      })
+      this.getvideoGroupList()
+
+    }
+
 
   },
 
@@ -19,20 +160,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var ctx = wx.createCanvasContext('canvasCircle');
-    // ctx.setLineWidth(4);
-    // 设置圆环的宽度
-    ctx.setStrokeStyle('#20183b');
-    // 设置圆环的颜色
-    ctx.setLineCap('round')
-    // 设置圆环端点的形状
-    ctx.beginPath();
-    //开始一个新的路径
-    ctx.arc(110, 110, 100, 0, 2 * Math.PI, false);
-    //设置一个原点(100,100)，半径为90的圆的路径到当前路径
-    ctx.stroke();
-    //对当前路径进行描边
-    ctx.draw();
+
 
   },
 

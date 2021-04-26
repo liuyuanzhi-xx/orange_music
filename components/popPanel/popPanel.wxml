@@ -1,0 +1,6 @@
+<!-- components/playList/playList.wxml -->
+<view class="hover {{isOpen? 'open':''}}" bindtap="tapHandle" data-id="hover">
+    <view class="popContainer">
+        <slot></slot>
+    </view>
+</view>

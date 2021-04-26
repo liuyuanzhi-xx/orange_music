@@ -8,7 +8,7 @@
             <banner bannerList="{{bannerList}}" interval="{{3000}}" />
         </view>
         <view class="nav">
-            <view class="navItem">
+            <view class="navItem" catchtap="toDaily">
                 <view class="iconfont icon-meirigengxin"></view>
                 <view class="text">每日推荐</view>
             </view>
@@ -26,7 +26,7 @@
             </view>
         </view>
         <view class="recommendSheet">
-            <card title="推荐歌单">
+            <card title="推荐歌单" hasMore="{{false}}">
                 <view>
                     <sheetList list="{{sheets}}"></sheetList>
                 </view>
@@ -34,7 +34,7 @@
         </view>
     </view>
     <view class="bottomContainer">
-        <card title="新歌速递">
+        <card title="新歌速递" hasMore="{{false}}">
             <mySwiper list="{{newSongCut}}"></mySwiper>
         </card>
     </view>

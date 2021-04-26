@@ -11,8 +11,23 @@ Page({
     system: null,
     bannerList: [],
     sheets: [],
+    shortSheets: [],
     newSong: [],
+    shortNewSong: [],
     newSongCut: []
+  },
+  toDaily() {
+    if (app.globalData.userInfo) {
+      wx.navigateTo({
+        url: "/pages/musicPage/musicPage"
+      })
+    } else {
+      wx.showToast({
+        title: "请先登陆",
+        icon: 'none'
+      })
+    }
+
   },
 
 
@@ -27,17 +42,15 @@ Page({
       type: this.data.system || 1
     })
     const newSong = request('/personalized/newsong', {
-      limit: 9
+      limit: 15
     });
     let sheet = null;
     if (!app.globalData.userInfo) {
       sheet = request('/personalized', {
-        limit: 6
+        limit: 15
       })
     } else {
-      sheet = request('/recommend/resource', {
-        limit: 6
-      })
+      sheet = request('/recommend/resource')
     }
     Promise.all([banner, sheet, newSong]).then((result) => {
       if (result[0].data.code == 200) {
@@ -48,13 +61,15 @@ Page({
       if (result[1].data.code == 200) {
         let data = null;
         if (result[1].data.result) {
+
           data = result[1].data.result
         } else {
-          data = getRandomArrayElements(result[1].data.recommend, 6);
+
+          data = result[1].data.recommend;
         }
         this.setData({
           sheets: data.map((item) => {
-            // console.log(item.playcount);
+
             if (item.playcount) {
               item.playcount = item.playcount > 10000 ? Math.floor(item.playcount / 10000) + "万" : item.playcount;
             } else {

@@ -34,8 +34,21 @@ Component({
    */
   methods: {
     tapPlay() {
+      if (!this.data.playSongList || this.data.playSongList.list.length == 0) {
+        wx.showToast({
+          title: '暂无音乐',
+          icon: 'none'
+        })
+        return;
+      }
       PubSub.publish('togglePlay', !this.data.isPlay)
 
+
+    },
+    toPlay() {
+      wx.navigateTo({
+        url: '/pages/play/play'
+      })
 
     },
 
@@ -56,24 +69,26 @@ Component({
         playSong: null
       })
     },
-    async addPlaysong(msg, value) {
+    addPlaySong(msg, value) {
+
       this.setData({
         playSongList: value,
         playSong: value.list[value.current]
       });
-
-
-
     }
 
   },
 
-  attached: function () {
+  attached: async function () {
 
-    PubSub.subscribe('pb_addPlaysong', this.addPlaysong.bind(this))
+    PubSub.subscribe('pb_addPlaySong', this.addPlaySong.bind(this))
     PubSub.subscribe("pb_togglePlay", this.togglePlay.bind(this))
     PubSub.subscribe("pb_toggleLoading", this.toggleLoading.bind(this))
     PubSub.subscribe("pb_emptyPlaySong", this.emptyPlaySong.bind(this))
+    this.setData({
+      playSongList: app.globalData.playSong,
+      playSong: app.globalData.playSong.list[app.globalData.playSong.current]
+    })
 
 
 

@@ -1,5 +1,6 @@
 // pages/search/search.js
 import request from "../../utils/request"
+import PubSub from "pubsub-js"
 Page({
 
   /**
@@ -11,8 +12,39 @@ Page({
     searchRes: null,
     inputValue: "",
     loadingHot: false,
-    loadingRes: false
+    loadingRes: false,
+    isPop: false,
+    songDetail: null
 
+
+  },
+  togglePop(e) {
+
+    this.setData({
+      isPop: !this.data.isPop
+    })
+    if (e.detail) {
+      this.setData({
+        songDetail: e.detail
+      })
+
+
+    }
+
+  },
+  handleTap(e) {
+
+    if (e.mark.type == 'next') {
+      let song = {
+        id: this.data.songDetail.id,
+        name: this.data.songDetail.name,
+        picUrl: this.data.songDetail.al.picUrl,
+        singer: this.data.songDetail.singer,
+        duration: this.data.songDetail.dt
+      }
+      PubSub.publish('addNextPlay', song)
+
+    }
 
   },
   selected: function (e) {
@@ -43,7 +75,7 @@ Page({
     })
 
     if (res.data.code == 200) {
-      console.log(res.data.result.song.songs)
+
       res.data.result.song.songs = res.data.result.song.songs.map((item) => {
         const singer = item.ar.reduce((prev, cur, index) => {
           if (index == item.ar.length - 1) {
@@ -56,7 +88,7 @@ Page({
         item.singer = singer;
         return item;
       })
-      console.log(res.data.result)
+
       this.setData({
         searchRes: res.data.result
       })
@@ -130,7 +162,7 @@ Page({
     this.setData({
       loadingHot: false
     })
-    console.log(res)
+
     if (res.data.code == 200) {
       this.setData({
         hotList: res.data.data

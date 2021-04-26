@@ -1,15 +1,62 @@
 <!-- pages/play/play.wxml -->
 <view class="playContainer">
-    <view class="singer">演唱：{{singer}}</view>
+    <view class="singer" wx:if="{{singer}}">演唱：{{singer}}</view>
     <view class="handle">
-        <image src="/static/images/play/needle.png" />
+        <image src="/static/images/play/needle.png" animation="{{handle_ani}}" />
         <view class="circle"></view>
     </view>
-    <view class="disc">
+    <view class="disc {{isPlay&&!loading? 'disc_start':'disc_paused'}}" animation="{{disc_ani}}">
         <image class="disc_img" src="/static/images/play/disc.png">
-            <image class="picUrl" src="{{picUrl}}" />
+            <image class="picUrl" src="{{picUrl?picUrl:'../../static/images/playBar/disc.png'}}" />
         </image>
     </view>
     <view class="liric"></view>
-    <view class="playBar"></view>
+    <view class="playBar">
+        <view class="playType">
+            <view class="iconfont icon-liebiaoxunhuan"></view>
+        </view>
+        <view class="prev" catchtap="togglePlaySong" mark:type="prev">
+            <view class="iconfont icon-047caozuo_shangyishou"></view>
+        </view>
+        <view class="play">
+            <view class="iconfont icon-zanting2" catchtap="playTap" style="display:{{isPlay && !loading ? 'block':'none'}}"></view>
+            <view class="iconfont icon-bofang4" catchtap="playTap" style="display:{{!isPlay && !loading ? 'block':'none'}}"></view>
+            <view class="loading" style="display:{{loading ? 'block':'none'}}">
+                <image src="/static/images/loading3.svg"></image>
+            </view>
+        </view>
+        <view class="next" catchtap="togglePlaySong" mark:type="next">
+            <view class="iconfont icon-048caozuo_xiayishou"></view>
+        </view>
+        <view class="songList" catchtap="toggleOpen">
+            <view class="iconfont icon-caidanyou"></view>
+        </view>
+    </view>
+    <!-- <view class="playList"> -->
+    <popPanel isOpen="{{isOpen}}" bindclose="toggleOpen">
+        <view class="playListContainer" catchtap="playListTap">
+            <view class="title">
+                <view class="text">
+                    当前播放
+                    <view class="count">({{playSong.list.length}})</view>
+                </view>
+                <view class="empty" mark:value="{{item.id}}" mark:type="empty">
+                    <view class="iconfont icon-lajitong"></view>
+                </view>
+            </view>
+            <view class="playList" style="display:{{playSong.list.length?'block':'none'}}">
+                <view class="item" wx:for="{{showList}}" key="id" mark:value="{{item.id}}" mark:type="play">
+                    <view class="info">
+                        <view class="songName">{{item.name}}</view>
+                        <view class="singer">{{'—'+item.singer}}</view>
+                        <image src="/static/images/playing.svg" style="display:{{playSong.list[playSong.current].id==item.id?'block':'none'}}" />
+                    </view>
+                    <view class="delete" mark:value="{{item.id}}" mark:type="delete">
+                        <view class="iconfont icon-guanbi"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </popPanel>
+    <!-- </view> -->
 </view>

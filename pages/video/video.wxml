@@ -1,5 +1,60 @@
 <!-- pages/video/video.wxml -->
-<text>pages/video/video.wxml</text>
-<view class="playButtonContainer">
-    <canvas canvas-id="canvasCircle" id="myCanvas"></canvas>
+<view class="videoContainer">
+    <view class="header">
+        <view class="camera">
+            <image class="img" src="/static/images/video/video.jpg"></image>
+        </view>
+        <view class="search">
+            <searchBar />
+        </view>
+    </view>
+    <view class="nav">
+        <view class="navContainer" bindtap="changeNavId">
+            <view class="navItem {{navId==item.id?'active':''}}" wx:for="{{navGroupList}}" wx:key="id" mark:id="{{item.id}}">
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+    <scroll-view scroll-y class="videoList" refresher-enabled bindrefresherrefresh="refresh" refresher-triggered="{{isTriggered}}" bindscrolltolower="getMore">
+        <view class="videoItem" wx:for="{{videoGroupList}}" wx:key="id">
+            <view class="videoBox row">
+                <video class="video common" wx:if="{{isPlay&&!videoLoading&&vid==item.data.vid}}" src="{{videoUrl}}" poster="{{item.data.coverUrl}}" object-fit="fill" autoplay="{{true}}"></video>
+                <image class="img common" wx:else src="{{item.data.coverUrl}}" mark:vid="{{item.data.vid}}"></image>
+                <view class="loading" hidden="{{!videoLoading}}">
+                    <loading url="/static/images/loading3.svg" />
+                </view>
+                <view class="play" style="display:{{isPlay&&(vid==item.data.vid)?'none':'flex'}}" catchtap="play" mark:vid="{{item.data.vid}}">
+                    <view class="iconfont icon-bofang2"></view>
+                    <view class="duration">{{item.data.duration}}</view>
+                </view>
+            </view>
+            <view class="desc row">{{item.data.description?item.data.description:""}}</view>
+            <view class="title row">
+                <view class="info">
+                    <view class="avatar">
+                        <image class="img" src="{{item.data.creator.avatarUrl}}"></image>
+                    </view>
+                    <view class="name">{{item.data.creator.nickname}}</view>
+                </view>
+                <view class="other">
+                    <view class="like item">
+                        <view class="iconfont icon-xihuan"></view>
+                        <sup class="count">{{item.data.praisedCount}}</sup>
+                    </view>
+                    <view class="comment item">
+                        <view class="iconfont icon-pinglun"></view>
+                        <sup class="count">{{item.data.commentCount}}</sup>
+                    </view>
+                    <view class="share item">
+                        <button open-type="share">
+                            <view class="iconfont icon-Group-"></view>
+                        </button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="loading" style="display:{{listLoading&&!videoGroupList.length?'block':'none'}}">
+        <loading url="/static/images/loading2.svg" text="努力加载中" />
+    </view>
 </view>

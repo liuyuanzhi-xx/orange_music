@@ -1,14 +1,19 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/video/video",
+    
     "pages/search/search",
     "pages/mine/mine",
     "pages/login/login",
     "pages/register/register",
-    "pages/video/video",
+    
     "pages/forget/forget",
     "components/loading/loading",
-    "pages/play/play"
+    "pages/play/play",
+    "pages/musicPage/musicPage"
+    
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

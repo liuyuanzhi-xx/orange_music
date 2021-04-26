@@ -38,7 +38,7 @@
         <view class="resultContainer" hidden="{{loadingRes || !searchRes}}">
             <view class="item">
                 <card title="单曲" linkText="{{searchRes.song.moreText}}" hasMore="{{false}}">
-                    <musicList list="{{searchRes.song.songs}}" />
+                    <musicList list="{{searchRes.song.songs}}" bindpop="togglePop" />
                 </card>
             </view>
         </view>
@@ -46,7 +46,29 @@
             <loading url="/static/images/loading2.svg" text="努力加载中..." />
         </view>
     </view>
-    <!-- <view class="playBar">
-        <playBar song="{{playSong}}" />
-    </view> -->
+    <popPanel isOpen="{{isPop}}" bindclose="togglePop">
+        <view class="songdetail">
+            <view class="title">
+                <image class="img" src="{{songDetail?songDetail.al.picUrl:'/static/images/playBar/disc.png'}}"></image>
+                <view class="info">
+                    <view class="songName">{{songDetail?songDetail.name:""}}</view>
+                    <view class="singer">{{songDetail?songDetail.singer:""}}</view>
+                </view>
+            </view>
+            <view class="bottom" bindtap="handleTap">
+                <view class="item nextPlay" mark:type="next">
+                    <view class="iconfont icon-tianjia"></view>
+                    <view class="text">下一首播放</view>
+                </view>
+                <view class="item singer" mark:type="singer">
+                    <view class="iconfont icon-wode1"></view>
+                    <view class="text">歌手：{{songDetail?songDetail.singer:""}}</view>
+                </view>
+                <view class="item disc" mark:type="disc">
+                    <view class="iconfont icon-zhuanji"></view>
+                    <view class="text">专辑：{{songDetail?songDetail.al.name:""}}</view>
+                </view>
+            </view>
+        </view>
+    </popPanel>
 </view>

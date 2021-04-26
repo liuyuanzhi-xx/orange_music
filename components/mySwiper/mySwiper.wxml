@@ -2,7 +2,7 @@
 <view class="swiperContainer">
     <swiper class="swiper" next-margin="80rpx" style="height:360rpx">
         <swiper-item class="swiperItem" wx:for="{{list}}" wx:key="id">
-            <musicList list="{{item}}" />
+            <musicList list="{{item}}" canOperate="{{false}}" />
         </swiper-item>
     </swiper>
 </view>

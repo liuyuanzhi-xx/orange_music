@@ -16,6 +16,10 @@ Component({
       type: Boolean,
       value: true
     },
+    moreLink: {
+      type: String,
+      value: ""
+    },
     linkTo: {
       type: String,
       value: ""

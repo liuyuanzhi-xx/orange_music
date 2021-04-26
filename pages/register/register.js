@@ -38,11 +38,11 @@ Page({
         phoneFlag: false
       })
     }
-    console.log(res)
+
   },
   isPhone() {
     const rule = rules.isPhone(this.data.phone);
-    console.log(rule.msg);
+
     this.setData({
       phoneTips: rule.msg,
       phoneFlag: rule.flag
@@ -53,7 +53,7 @@ Page({
   },
   isSame() {
     const rule = rules.isSame(this.data.password, this.data.Apassword);
-    console.log(rule.msg);
+
     this.setData({
       ApasswordTips: rule.msg,
       ApasswordFlag: rule.flag
@@ -62,7 +62,7 @@ Page({
   isEmpty(e) {
     let type = e.currentTarget.dataset.type;
     const rule = rules.isEmpty(this.data[type]);
-    console.log(rule.msg);
+
     this.setData({
       [type + 'Tips']: rule.msg,
       [type + 'Flag']: rule.flag

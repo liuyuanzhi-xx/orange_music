@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "loading":"/components/loading/loading",
+    "popPanel":"/components/popPanel/popPanel"
+  }
 }

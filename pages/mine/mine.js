@@ -50,7 +50,6 @@ Page({
         })
       }
 
-      console.log(this.data.weekData)
     }
 
   },

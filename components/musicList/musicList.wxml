@@ -1,18 +1,28 @@
 <!-- components/musicList/musicList.wxml -->
 <view class="musicListContainer">
-    <view class="musicItem" wx:for="{{list}}" wx:key="id" catchtap="handleTap" mark:index="{{index}}" data-id="info">
-        <image class="image" src="{{item.picUrl||item.al.picUrl}}" catchtap="handleTap" mark:index="{{index}}" data-id="img">
-            <image class="iconfont play" src="/static/images/loading2.svg" style="display:{{isPlay && (playSong.id == item.id)? 'block':'none'}}"></image>
-            <view class="iconfont icon-bofang2" style="display:{{(!isPlay || (playSong.id != item.id)) && (loadingSongId != item.id || !loading )? 'block':'none'}}"></view>
-            <image class="iconfont loading" src="/static/images/loading.svg" style="display:{{loading && (loadingSongId == item.id)? 'block':'none'}}"></image>
-        </image>
-        <view class="musicInfo">
-            <view class="title">
-                <view class="songName">{{item.name}}</view>
+    <view class="list">
+        <view class="musicItem" wx:for="{{musicList}}" wx:key="id" catchtap="handleTap" mark:index="{{index}}" mark:type="info">
+            <view class="info">
+                <image class="image" src="{{item.picUrl||item.al.picUrl}}" mark:index="{{index}}" mark:type="img">
+                    <image class="iconfont play" src="/static/images/playing.svg" style="display:{{isPlay && (playSongId == item.id)? 'block':'none'}}"></image>
+                    <view class="iconfont icon-bofang2" style="display:{{(!isPlay || (playSongId != item.id)) && (loadingSongId != item.id || !loading )? 'block':'none'}}"></view>
+                    <image class="iconfont loading" src="/static/images/loading.svg" style="display:{{loading && (loadingSongId == item.id)? 'block':'none'}}"></image>
+                </image>
+                <view class="musicInfo">
+                    <view class="title">
+                        <view class="songName">{{item.name}}</view>
+                    </view>
+                    <view class="disc">
+                        <view class="singer">{{" —"+item.singer}}</view>
+                    </view>
+                </view>
             </view>
-            <view class="disc">
-                <view class="singer">{{" —"+item.singer}}</view>
+            <view class="operate" wx:if="{{canOperate}}" mark:value="{{item}}" mark:type="operate">
+                <view class="iconfont icon-caozuo"></view>
             </view>
         </view>
+    </view>
+    <view class="loading" wx:if="{{resLoading}}">
+        <loading url="/static/images/loading2.svg" text="努力加载中..." />
     </view>
 </view>

@@ -1,5 +1,5 @@
 <!-- components/playBar/playBar.wxml -->
-<view class="playBarContainer">
+<view class="playBarContainer" catchtap="toPlay">
     <view class="musicInfo">
         <view class="disc">
             <image class="image" src="{{playSong ? playSong.picUrl : '../../static/images/playBar/disc.png'}}"></image>
@@ -17,7 +17,7 @@
             <view class="iconfont icon-bofang2"></view>
         </view>
         <view class="loading" style="display:{{loading ? 'block':'none'}}">
-            <image src="/static/images/loading3.svg"></image>
+            <image src="/static/images/loading4.svg"></image>
         </view>
         <view class="playList">
             <view class="iconfont icon-gedan"></view>

@@ -1,7 +1,7 @@
 <!-- pages/mine/mine.wxml -->
 <view class="mineContainer">
     <view class="header">
-        <image class="img" src="/static/images/personal/bgPersonHeader.png" alt="" />
+        <image class="img" src="/static/images/personal/g8y7rd.jpg" alt="" />
         <view class="userCard">
             <view class="userInfo" catchtap="toLogin">
                 <view class="avatar">
