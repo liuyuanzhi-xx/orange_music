@@ -3,7 +3,7 @@ const mobileURL = "http://imocl.cn.utools.club"
 export default function (url, data = {}, method = "get") {
     return new Promise((resolve, reject) => {
         wx.request({
-            url: mobileURL + url,
+            url: baseURL + url,
             method,
             data,
             header: {

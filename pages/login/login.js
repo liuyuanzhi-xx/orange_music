@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone: "19117692297",
-    password: "302822945Haiai",
+    phone: "",
+    password: "",
     phoneFlag: false,
     phoneTips: "",
     passwordFlag: false,
