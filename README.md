@@ -39,16 +39,26 @@
 后端应用来 node 版本：https://binaryify.github.io/NeteaseCloudMusicApi/
 
 ## 项目截图
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113911.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113920.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113931.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113935.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113947.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113951.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114018.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114027.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114037.jpg)
-![](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114045.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113911.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113920.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113931.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113935.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113947.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_113951.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114018.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114027.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114037.jpg)
+
+![Image](https://github.com/liuyuanzhi-xx/orange_music/blob/master/static/images/readme/Screenshot_20210426_114045.jpg)
 
 
 
