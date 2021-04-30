@@ -2,7 +2,7 @@
 
 > 项目介绍：一个音乐类小程序。本项目数据均来自使用网易云官方真实数据。
 
-> 使用教程：命令行进入 NeteaseCloudMusicApi 目录，npm install,若遇到报错，输入 npm install —g nodemon。然后 node app.js,启动后端接口。启动微信小程序。如需微信小程序真机调试，开启 utools 内网穿透,内网地址：localhost，内网端口 3000。将 request.js 内 baseURL 改成外网域名
+> 使用教程：命令行进入 NeteaseCloudMusicApi 目录，npm install,若遇到报错，输入 npm install —g nodemon。然后 node app.js,启动后端接口。启动微信小程序。如需微信小程序真机调试，开启 utools 内网穿透,内网地址：localhost，内网端口 3000。将 request.js 内 baseURL 改成外网域名。由于 modle:value 在开发工具内调试没有作用，请在预览调试或者真机调试中进行登陆或者注册操作
 
 > 演示地址：暂无上线。
 
