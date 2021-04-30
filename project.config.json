@@ -5,6 +5,14 @@
 			{
 				"type": "folder",
 				"value": "NeteaseCloudMusicApi"
+			},
+			{
+				"type": "folder",
+				"value":"static/images/readme"
+			},
+			{
+				"type": "suffix",
+				"value": ".md"
 			}
 		]
 	},
